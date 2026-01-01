@@ -21,6 +21,10 @@
 </head>
 
 <body class="relative bg-slate-100 text-black lg:px-14 px-7 py-8">
+    {{-- @if ($errors->any)
+        
+    @endif --}}
+
     {{-- Navbar --}}
     <nav class="h-20 w-full fixed top-0 left-0 z-[999] flex items-center justify-between lg:px-10 px-5 bg-slate-100">
         <div class="flex items-center gap-3">
@@ -86,19 +90,21 @@
                 <p class="lg:text-2xl text-lg font-bold">
                     Lorem
                 </p>
-                <p class="lg:max-w-6/12 w-full text-xs">
+                <p class="w-full text-xs">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
-                <form action="#" class="flex items-center h-10 *:h-full mt-3">
-                    <input type="text" name="emailMsg" placeholder="Send us any message via email"
-                        class="ring ring-slate-200 rounded-l-md px-3 text-sm w-full lg:w-4/12">
+                <form action="{{ route('contact.email') }}" method="POST" class="flex items-center h-10 *:h-full mt-3">
+                    @csrf
+                    <input type="text" name="email_message" placeholder="Send us any message via email" required
+                        class="ring ring-slate-200 rounded-l-md px-3 text-xs w-full lg:w-8/12">
                     <button type="submit"
                         class="btn ring ring-yellow-300 btn-soft btn-warning rounded-l-none rounded-r-md">Submit</button>
                 </form>
             </div>
 
-            <div class="flex lg:justify-between justify-start w-full lg:gap-20 gap-12 mt-5 *:gap-y-0 *:[&_.footerLink]:hover:text-orange-400 **:transition">
+            <div
+                class="flex lg:justify-end justify-start w-full lg:gap-20 gap-12 mt-5 *:gap-y-0 *:[&_.footerLink]:hover:text-orange-400 **:transition">
                 <ul class="flex flex-col gap-3">
                     <li class="font-bold text-lg">Lorem</li>
                     <li class="footerLink"><a href="#">Ipsum</a></li>
